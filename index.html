@@ -5,46 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>wheremymoney</title>
-    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="stylesheet.css">
     <link rel="icon" type="image/x-icon" href="insert-url">
   </head>
   <body>
     <h1>Expense Tracker</h1>
-    <form>
-      <label for="totalBudget">Enter total budget:</label><br />
-      <input type="text" name="totalbudget"> <br /><br />
-      <label for="name">Enter name:</label><br />
-      <input type="text" name="name"><br /><br />
-      <label for="dropdown-categories">Choose category:</label><br />
-      <select class="dropdown-list">
-        <option value="">--Please choose an option--</option>
-        <option value="Meals & Drinks">Meals & Drinks</option>
-        <option value="Recreation">Recreation</option>
-        <option value="Gifts & Souvenirs">Gifts & Souvenirs</option>
-      </select><br /><br />
-      <input type="submit" value="Add"><br /><br />
-    </form>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Expense</th>
-          <th scope="col">Category</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
+    <div class="container">
+        <div class="total-budget-container">
+            <h3>Budget</h3>
+            <input type="number" id="total-budget" placeholder="Enter Total Amount">
+            <button class="submit" id="total-budget-button">Set Budget</button>
+        </div>
 
-        </tr>
-      </tbody>
-      <tfoot>
+        <div class="expenses-container">
+            <h3>Expenses</h3>
+            <input type="text" id="expense-item" placeholder="Enter Name of Item"><br />
+            <input type="number" id="expense-amount" placeholder="Enter Price of Item">
+            <button class="submit" id="expense-button">Add</button>
+        </div>
+    </div>
+
+    <div class="expenses-table">
+      <table>
+        <thead>
           <tr>
-            <th scope="row" colspan="2">Remaining Balance</th>
-            <td></td>
+            <th scope="col">Item</th>
+            <th scope="col">Expense</th>
           </tr>
-      </tfoot>
-    </table>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Accomodation</th>
+            <td>5000</td>
+          </tr>
+          <tr>
+            <th scope="row">Gifts & Souvenirs</th>
+            <td>1000</td>
+          </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+              <th scope="row" id="remaining-balance">Remaining Balance</th>
+              <td>1000</td>
+            </tr>
+        </tfoot>
+      </table>
+    </div>
     
-	<script src=""></script>
+	  <script src="script.js"></script>
   </body>
 </html>
