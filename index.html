@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>wheremymoney</title>
+    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="insert-url">
+  </head>
+  <body>
+    <h1>Expense Tracker</h1>
+    <form>
+      <label for="totalBudget">Enter total budget:</label><br />
+      <input type="text" name="totalbudget"> <br /><br />
+      <label for="name">Enter name:</label><br />
+      <input type="text" name="name"><br /><br />
+      <label for="dropdown-categories">Choose category:</label><br />
+      <select class="dropdown-list">
+        <option value="">--Please choose an option--</option>
+        <option value="Meals & Drinks">Meals & Drinks</option>
+        <option value="Recreation">Recreation</option>
+        <option value="Gifts & Souvenirs">Gifts & Souvenirs</option>
+      </select><br /><br />
+      <input type="submit" value="Add"><br /><br />
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Expense</th>
+          <th scope="col">Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+
+        </tr>
+      </tbody>
+      <tfoot>
+          <tr>
+            <th scope="row" colspan="2">Remaining Balance</th>
+            <td></td>
+          </tr>
+      </tfoot>
+    </table>
+    
+	<script src=""></script>
+  </body>
+</html>
