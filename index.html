@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>wheremymoney</title>
     <link rel="stylesheet" href="stylesheet.css">
-    <link type="image/png" sizes="16x16" rel="icon" href=".../icons8-money-box-16.png">
+    <link rel="icon" type="image/x-icon" href="https://icons8.com/icon/ckrjM2xjKegD/cash">
   </head>
   <body>
     <h1>Expense Tracker</h1>
@@ -23,6 +23,21 @@
             <input type="number" id="expense-amount" placeholder="Enter Price of Item">
             <button class="submit" id="expense-button">Add</button>
         </div>
+    </div>
+
+    <div class="output-container">
+      <div>
+        <p>Total Budget</p>
+        <span id="total-budget-output">0</span>
+      </div>
+      <div>
+        <p>Expenses</p>
+        <span id="total-expenses-output">0</span>
+      </div>
+      <div>
+        <p>Balance</p>
+        <span id="balance-output">0</span>
+      </div>
     </div>
 
     <div class="expenses-table">
@@ -45,7 +60,7 @@
         </tbody>
         <tfoot>
             <tr>
-              <th scope="row" id="remaining-balance">Remaining Balance</th>
+              <th scope="row">Remaining Balance</th>
               <td>1000</td>
             </tr>
         </tfoot>
