@@ -55,8 +55,9 @@ h1, h3 {
 .output-container p, span {
     display: block;
     font-weight: bolder;
+    font-size: larger;
     text-align: center;
-    color: white;
+    color: black;
 }
 
 table {
