@@ -93,3 +93,8 @@ tfoot td {
 tfoot th {
     text-align: right;
 }
+
+footer p {
+    font-size: small;
+    font-family: "Shadows Into Light", cursive;
+}
