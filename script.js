@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     remainingBalanceFooter.textContent = balance.toFixed(2);
   }
 
-  // Function to add expense to the table
+  // Function to add expense to the table and update totalExpenses
   function addExpense(item, amount) {
     totalExpenses += amount;
     const newRow = document.createElement('tr');
@@ -80,6 +80,16 @@ document.addEventListener('DOMContentLoaded', () => {
     expensesTableBody.appendChild(newRow);
     saveToLocalStorage();
     updateOutputs();
+  }
+
+  // Function to add expense to the table without updating totalExpenses
+  function addExpenseToTable(item, amount) {
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+      <th scope="row">${item}</th>
+      <td>${amount.toFixed(2)}</td>
+    `;
+    expensesTableBody.appendChild(newRow);
   }
 
   // Function to save data to localStorage
@@ -102,10 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = JSON.parse(localStorage.getItem('expenseTrackerData'));
     if (data) {
       totalBudget = data.totalBudget;
-      totalExpenses = 0;
-      expensesTableBody.innerHTML = '';
+      totalExpenses = 0; // Reset totalExpenses before recalculating
+      expensesTableBody.innerHTML = ''; // Clear the table before adding stored data
       data.expenses.forEach(expense => {
-        addExpense(expense.item, expense.amount);
+        addExpenseToTable(expense.item, expense.amount);
+        totalExpenses += expense.amount; // Recalculate totalExpenses
       });
     }
     updateOutputs();
