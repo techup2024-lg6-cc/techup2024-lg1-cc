@@ -102,7 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = JSON.parse(localStorage.getItem('expenseTrackerData'));
     if (data) {
       totalBudget = data.totalBudget;
-      totalExpenses = data.totalExpenses;
+      totalExpenses = 0;
+      expensesTableBody.innerHTML = '';
       data.expenses.forEach(expense => {
         addExpense(expense.item, expense.amount);
       });
