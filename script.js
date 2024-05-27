@@ -14,7 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const balanceOutput = document.getElementById('balance-output');
     const expensesTableBody = document.querySelector('.expenses-table tbody');
     const remainingBalanceFooter = document.querySelector('.expenses-table tfoot tr td');
-  
+    const resetButton = document.getElementById('reset-button');
+
+    // Load data from localStorage
+    loadFromLocalStorage();
+
     // Set budget
     totalBudgetButton.addEventListener('click', () => {
       const budgetValue = parseFloat(totalBudgetInput.value);
@@ -23,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       totalBudget = budgetValue;
+      saveToLocalStorage();
       updateOutputs();
       totalBudgetInput.value = '';
     });
@@ -43,7 +48,18 @@ document.addEventListener('DOMContentLoaded', () => {
       expenseItemInput.value = '';
       expenseAmountInput.value = '';
     });
-  
+
+    // Reset data
+    resetButton.addEventListener('click', () => {
+      if (confirm('Are you sure you want to reset all data?')) {
+        localStorage.clear();
+        totalBudget = 0;
+        totalExpenses = 0;
+        expensesTableBody.innerHTML = '';
+        updateOutputs();
+      }
+    });
+
     // Function to update the outputs
     function updateOutputs() {
       totalBudgetOutput.textContent = totalBudget.toFixed(2);
@@ -62,9 +78,38 @@ document.addEventListener('DOMContentLoaded', () => {
         <td>${amount.toFixed(2)}</td>
       `;
       expensesTableBody.appendChild(newRow);
+      saveToLocalStorage();
       updateOutputs();
     }
   
+  // Function to save data to localStorage
+  function saveToLocalStorage() {
+    const data = {
+      totalBudget: totalBudget,
+      totalExpenses: totalExpenses,
+      expenses: []
+    };
+    document.querySelectorAll('.expenses-table tbody tr').forEach(row => {
+      const item = row.children[0].textContent;
+      const amount = parseFloat(row.children[1].textContent);
+      data.expenses.push({ item, amount });
+    });
+    localStorage.setItem('expenseTrackerData', JSON.stringify(data));
+  }
+
+  // Function to load data from localStorage
+  function loadFromLocalStorage() {
+    const data = JSON.parse(localStorage.getItem('expenseTrackerData'));
+    if (data) {
+      totalBudget = data.totalBudget;
+      totalExpenses = data.totalExpenses;
+      data.expenses.forEach(expense => {
+        addExpense(expense.item, expense.amount);
+      });
+    }
+    updateOutputs();
+  }
+
     // Initial update to set all values to zero
     updateOutputs();
   });
